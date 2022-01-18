@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.carousel {
+  margin: 0 auto;
+}
+
+.carousel .div {
+    font-weight: bold;
+    color: #14ade5;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px;
+    padding: 100px 10px;
+    box-shadow: 0 1px #ebebeb;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #e5e5e5 #d3d3d3 #b9c1c6;
+}
