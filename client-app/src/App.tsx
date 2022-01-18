@@ -48,15 +48,15 @@ function App() {
         sx={{
           flex: "1",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          flexDirection: "center",
+          justifyContent: 'center',
+          marginTop: '1rem'
         }}
       >
         <Carousel
           plugins={[
             "centered",
             "infinite",
-            "arrows",
             {
               resolve: slidesToShowPlugin,
               options: {
@@ -65,9 +65,9 @@ function App() {
             },
           ]}
         >
-          <img src={'imageOne'} />
-          <img src={'imageTwo'} />
-          <img src={'imageThree'} />
+          <img src={'./images/sample-promotion.jpg'} style={{width: '95%', borderRadius: '10px'}}/>
+          <img src={'./images/sample-promotion.jpg'} style={{width: '95%', borderRadius: '10px'}}/>
+          <img src={'./images/sample-promotion.jpg'} style={{width: '95%', borderRadius: '10px'}}/>
         </Carousel>
       </Paper>
       <BottomNavigation
