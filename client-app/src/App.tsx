@@ -22,6 +22,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import Grid from "@mui/material/Grid/Grid";
+import SearchIcon from '@mui/icons-material/Search';
 
 function App() {
   const [value, setValue] = React.useState(0);
@@ -29,7 +30,7 @@ function App() {
   return (
     <div
       style={{
-        width: "100vw",
+        width: "100%",
         height: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -38,21 +39,27 @@ function App() {
       <Paper
         sx={{
           width: "100%",
-          height: "3rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          height: "4rem",
+          position: 'fixed',
+          top: '0'
         }}
+        square
       >
         <Paper
+        
           sx={{
-            width: "100%",
-            margin: "10rem",
+            width: '99.5%',
+            margin: 'auto',
             backgroundColor: "#eee",
             height: "95%",
+            display: 'flex',
+            alignItems: 'center'
           }}
           elevation={0}
-        ></Paper>
+        >
+          <SearchIcon />
+          Search in store
+        </Paper>
       </Paper>
       <Paper
         sx={{
@@ -60,8 +67,9 @@ function App() {
           display: "flex",
           flexDirection: "center",
           justifyContent: "center",
-          marginTop: "1rem",
+          marginTop: '3.1rem'
         }}
+        square
       >
         <Stack
           sx={{ marginTop: "1rem", width: "100%", height: "100%" }}
