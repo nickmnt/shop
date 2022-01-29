@@ -9,7 +9,10 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@brainhubeu/react-carousel/lib/style.css";
 import "./sass/main.scss";
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Categories from "./Categories";
 
 const theme = createTheme({
   typography: {
@@ -21,7 +24,14 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
+            <Route path="/categories" element={<Categories />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
