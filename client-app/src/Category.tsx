@@ -1,5 +1,5 @@
 import React from "react";
-import Product from "./Product";
+import SubCategory from "./SubCategory";
 import Typography from "@mui/material/Typography/Typography";
 import { Link } from "react-router-dom";
 import Stack from "@mui/material/Stack/Stack";
@@ -38,20 +38,20 @@ export default function Category() {
           flexGrow: 0,
         }}
       >
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
+        <SubCategory />
       </div>
     </div>
   );

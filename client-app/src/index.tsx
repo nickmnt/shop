@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Categories from "./Categories";
+import CategoryPage from "./CategoryPage";
 
 const theme = createTheme({
   typography: {
@@ -29,6 +30,7 @@ ReactDOM.render(
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
             <Route path="/categories" element={<Categories />} />
+            <Route path="/category/:catId" element={<CategoryPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
