@@ -12,8 +12,16 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import Grid from "@mui/material/Grid/Grid";
-import SearchIcon from "@mui/icons-material/Search";
 import BottomNav from "./BottomNav";
+import AppBar from "@mui/material/AppBar/AppBar";
+import Toolbar from "@mui/material/Toolbar/Toolbar";
+import ShopIcon from "@mui/icons-material/Shop";
+import Box from "@mui/material/Box/Box";
+import Button from "@mui/material/Button/Button";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import LogoutIcon from "@mui/icons-material/Logout";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 export default function Home() {
   return (
@@ -25,30 +33,68 @@ export default function Home() {
         flexDirection: "column",
       }}
     >
-      <Paper
-        sx={{
-          width: "100%",
-          height: "4rem",
-          position: "fixed",
-          top: "0",
-        }}
-        square
-      >
-        <Paper
-          sx={{
-            width: "99.5%",
-            margin: "auto",
-            backgroundColor: "#eee",
-            height: "95%",
-            display: "flex",
-            alignItems: "center",
-          }}
-          elevation={0}
-        >
-          <SearchIcon />
-          Search in store
-        </Paper>
-      </Paper>
+      <AppBar position="static">
+        <Toolbar variant="dense">
+          <ShopIcon sx={{ marginRight: "1rem" }} />
+          <Typography variant="h6" color="inherit" component="div">
+            ReactStore
+          </Typography>
+          <Box
+            sx={{
+              display: { marginLeft: "1rem", xs: "none", md: "flex" },
+            }}
+          >
+            <Button
+              sx={{
+                my: 2,
+                color: "white",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <ShoppingCartIcon sx={{ marginRight: ".5rem" }} />
+              Cart
+            </Button>
+            <Button
+              sx={{
+                my: 2,
+                color: "white",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <AddCircleIcon sx={{ marginRight: ".5rem" }} />
+              Create
+            </Button>
+          </Box>
+          <div style={{ flexGrow: 1 }} />
+          <Box sx={{ display: "flex" }}>
+            <Button
+              sx={{
+                my: 2,
+                color: "white",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <AccountCircleIcon sx={{ marginRight: ".5rem" }} />
+              Account
+            </Button>
+            <Button
+              sx={{
+                my: 2,
+                color: "white",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <LogoutIcon sx={{ marginRight: ".5rem" }} />
+              Logout
+            </Button>
+          </Box>
+        </Toolbar>
+      </AppBar>
+
       <Paper
         sx={{
           flex: "1",
