@@ -12,5 +12,16 @@ namespace Persistence
         }
 
         public DbSet<Product> Products { get; set; }
+        
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Role>()
+                .HasData(
+                    new Role { Id = 1, Name = "Member", NormalizedName = "MEMBER" },
+                    new Role { Id = 2, Name = "Admin", NormalizedName = "ADMIN" }
+                );
+        }
     }
 }

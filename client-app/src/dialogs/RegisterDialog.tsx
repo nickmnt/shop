@@ -2,9 +2,9 @@ import Dialog from "@mui/material/Dialog/Dialog";
 import React from "react";
 import { TransitionProps } from "@mui/material/transitions";
 import Zoom from "@mui/material/Zoom/Zoom";
-import LoginForm from "./LoginForm";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { setLoginOpen } from "../features/dialog/dialogSlice";
+import { setRegisterOpen } from "../features/dialog/dialogSlice";
+import RegisterForm from "./RegisterForm";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -16,16 +16,16 @@ const Transition = React.forwardRef(function Transition(
 });
 
 export default function LoginDialog() {
-  const open = useAppSelector((x) => x.dialog.loginOpen);
+  const open = useAppSelector((x) => x.dialog.registerOpen);
   const dispatch = useAppDispatch();
 
   const handleClose = () => {
-    dispatch(setLoginOpen(false));
+    dispatch(setRegisterOpen(false));
   };
 
   return (
     <Dialog onClose={handleClose} open={open} TransitionComponent={Transition}>
-      <LoginForm />
+      <RegisterForm />
     </Dialog>
   );
 }

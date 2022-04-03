@@ -5,10 +5,10 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import agent from "../../app/api/agent";
 import { LoginDto } from "../../app/models/dto";
 import { User } from "../../app/models/user";
-import { history } from "../../index";
+import agent from "../../app/api/agent";
+import history from "../../app/historyApi";
 
 export interface UserState {
   user: User | null;

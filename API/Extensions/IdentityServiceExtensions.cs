@@ -17,12 +17,12 @@ namespace API.Extensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddIdentityCore<AppUser>(options =>
+            services.AddIdentityCore<AppUser>(opt =>
                 {
-                    options.Password.RequireNonAlphanumeric = false;
+                    opt.User.RequireUniqueEmail = true;
                 })
-                .AddEntityFrameworkStores<DataContext>()
-                .AddSignInManager<SignInManager<AppUser>>();
+                .AddRoles<Role>()
+                .AddEntityFrameworkStores<DataContext>();
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
             
@@ -31,10 +31,11 @@ namespace API.Extensions
                 {
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = key,
                         ValidateIssuer = false,
-                        ValidateAudience = false
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = key
                     };
                 });
             services.AddAuthorization(options =>

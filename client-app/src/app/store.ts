@@ -1,17 +1,26 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../features/user/userSlice";
+import dialogReducer from "../features/dialog/dialogSlice";
+import axios from "axios";
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
+    dialog: dialogReducer,
   },
 });
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+
+axios.interceptors.request.use((config) => {
+  const token = store.getState().user.user?.token;
+  if (token) {
+    if (!config.headers) {
+      config.headers = {};
+    }
+
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});

@@ -1,9 +1,8 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { history } from "../..";
 import { toast } from "react-toastify";
-import { store } from "../store";
-import { LoginDto } from "../models/dto";
+import { LoginDto, RegisterDto } from "../models/dto";
 import { User } from "../models/user";
+import history from "../historyApi";
 
 axios.defaults.baseURL = "http://localhost:5000/api/";
 
@@ -15,17 +14,7 @@ const sleep = (delay: number) => {
 
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
-axios.interceptors.request.use((config) => {
-  const token = store.getState().user.user?.token;
-  if (token) {
-    if (!config.headers) {
-      config.headers = {};
-    }
-
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+export const interceptors = axios.interceptors;
 
 axios.interceptors.response.use(
   async (response) => {
@@ -85,8 +74,9 @@ const requests = {
 };
 
 const Account = {
-  login: (user: LoginDto) => requests.post<User>("/account/login", user),
+  login: (user: LoginDto) => requests.post<User>("/Account/login", user),
   currentUser: () => requests.get<User>("account/currentUser"),
+  register: (values: RegisterDto) => requests.post("account/register", values),
 };
 
 const agent = {

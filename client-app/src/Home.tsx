@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import Paper from "@mui/material/Paper/Paper";
 import Stack from "@mui/material/Stack/Stack";
@@ -21,10 +20,14 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { useAppSelector } from "./app/hooks";
+import { useAppDispatch, useAppSelector } from "./app/hooks";
+import { setLoginOpen, setRegisterOpen } from "./features/dialog/dialogSlice";
+import { signOut } from "./features/user/userSlice";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const user = useAppSelector((x) => x.user);
+  const dispatch = useAppDispatch();
 
   return (
     <div
@@ -37,10 +40,21 @@ export default function Home() {
     >
       <AppBar position="static">
         <Toolbar variant="dense">
-          <ShopIcon sx={{ marginRight: "1rem" }} />
-          <Typography variant="h6" color="inherit" component="div">
-            ReactStore
-          </Typography>
+          <Button
+            sx={{
+              my: 2,
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+            }}
+            component={Link}
+            to="/"
+          >
+            <ShopIcon sx={{ marginRight: "1rem" }} />
+            <Typography variant="h6" color="inherit" component="div">
+              ReactStore
+            </Typography>
+          </Button>
           <Box
             sx={{
               display: { marginLeft: "1rem", xs: "none", md: "flex" },
@@ -71,7 +85,7 @@ export default function Home() {
           </Box>
           <div style={{ flexGrow: 1 }} />
           <Box sx={{ display: "flex" }}>
-            {user ? (
+            {user.user ? (
               <>
                 <Button
                   sx={{
@@ -91,6 +105,7 @@ export default function Home() {
                     display: "flex",
                     alignItems: "center",
                   }}
+                  onClick={() => dispatch(signOut())}
                 >
                   <LogoutIcon sx={{ marginRight: ".5rem" }} />
                   Logout
@@ -105,6 +120,9 @@ export default function Home() {
                     display: "flex",
                     alignItems: "center",
                   }}
+                  onClick={() => {
+                    dispatch(setLoginOpen(true));
+                  }}
                 >
                   Login
                 </Button>
@@ -114,6 +132,9 @@ export default function Home() {
                     color: "white",
                     display: "flex",
                     alignItems: "center",
+                  }}
+                  onClick={() => {
+                    dispatch(setRegisterOpen(true));
                   }}
                 >
                   Register
