@@ -7,13 +7,15 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import "@brainhubeu/react-carousel/lib/style.css";
 import "./sass/main.scss";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Categories from "./Categories";
 import CategoryPage from "./CategoryPage";
+import { createBrowserHistory } from "history";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 const theme = createTheme({
   typography: {
@@ -22,18 +24,22 @@ const theme = createTheme({
   },
 });
 
+export const history = createBrowserHistory();
+
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<Home />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/category/:catId" element={<CategoryPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<Home />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/category/:catId" element={<CategoryPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Paper from "@mui/material/Paper/Paper";
-import Carousel, { slidesToShowPlugin } from "@brainhubeu/react-carousel";
 import Stack from "@mui/material/Stack/Stack";
 import RedeemIcon from "@mui/icons-material/Redeem";
 import StoreIcon from "@mui/icons-material/Store";
@@ -22,8 +21,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { useAppSelector } from "./app/hooks";
 
 export default function Home() {
+  const user = useAppSelector((x) => x.user);
+
   return (
     <div
       style={{
@@ -69,28 +71,55 @@ export default function Home() {
           </Box>
           <div style={{ flexGrow: 1 }} />
           <Box sx={{ display: "flex" }}>
-            <Button
-              sx={{
-                my: 2,
-                color: "white",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <AccountCircleIcon sx={{ marginRight: ".5rem" }} />
-              Account
-            </Button>
-            <Button
-              sx={{
-                my: 2,
-                color: "white",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <LogoutIcon sx={{ marginRight: ".5rem" }} />
-              Logout
-            </Button>
+            {user ? (
+              <>
+                <Button
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <AccountCircleIcon sx={{ marginRight: ".5rem" }} />
+                  Account
+                </Button>
+                <Button
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <LogoutIcon sx={{ marginRight: ".5rem" }} />
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  Login
+                </Button>
+                <Button
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  Register
+                </Button>
+              </>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
@@ -109,34 +138,6 @@ export default function Home() {
           sx={{ marginTop: "1rem", width: "100%", height: "100%" }}
           direction="column"
         >
-          <Carousel
-            plugins={[
-              "centered",
-              "infinite",
-              {
-                resolve: slidesToShowPlugin,
-                options: {
-                  numberOfSlides: 2,
-                },
-              },
-            ]}
-          >
-            <img
-              src={"./images/sample-promotion.jpg"}
-              style={{ width: "95%", borderRadius: "10px" }}
-              alt="Promotion1"
-            />
-            <img
-              src={"./images/sample-promotion.jpg"}
-              style={{ width: "95%", borderRadius: "10px" }}
-              alt="Promotion2"
-            />
-            <img
-              src={"./images/sample-promotion.jpg"}
-              style={{ width: "95%", borderRadius: "10px" }}
-              alt="Promotion3"
-            />
-          </Carousel>
           <Stack
             sx={{
               marginTop: "1rem",

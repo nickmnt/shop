@@ -18,22 +18,16 @@ namespace Persistence
                 {
                     new AppUser
                     {
-                        FirstName = "Bob",
-                        LastName = "Smith",
                         UserName = "bob",
                         Email = "bob@test.com",
                     },
                     new AppUser
                     {
-                        FirstName = "Jane",
-                        LastName = "Smithson",
                         UserName = "jane",
                         Email = "jane@test.com",
                     },
                     new AppUser
                     {
-                        FirstName = "Tom",
-                        LastName = "Lock",
                         UserName = "tom",
                         Email = "tom@test.com",
                     },
@@ -42,8 +36,18 @@ namespace Persistence
                 foreach (var user in users)
                 {
                     await userManager.CreateAsync(user, "Pa$$w0rd");
+                    await userManager.AddToRoleAsync(user, "Member");
                 }
+                
+                var admin = new AppUser
+                {
+                    UserName = "admin",
+                    Email = "admin@test.com"
+                };
 
+                await userManager.CreateAsync(admin, "Pa$$w0rd");
+                await userManager.AddToRolesAsync(admin, new[] {"Member", "Admin"});
+                
                 await context.SaveChangesAsync();
             }
         }
