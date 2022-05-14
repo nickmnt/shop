@@ -14,7 +14,7 @@ namespace API.Extensions
 {
     public static class ApplicationServiceExtensions
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config) 
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddSwaggerGen(c =>
             {
@@ -23,17 +23,17 @@ namespace API.Extensions
             });
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(config.GetConnectionString("DefaultConnection"), b =>
-                {
-                    b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
-                });
+                options.UseSqlServer(config.GetConnectionString("DefaultConnection"),
+                    b => { b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery); });
             });
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy", policy =>
-                {
-                    policy.AllowAnyMethod().AllowAnyHeader().AllowCredentials().WithOrigins("http://localhost:3000","https://localhost:3000");
-                });
+                options.AddPolicy("CorsPolicy",
+                    policy =>
+                    {
+                        policy.AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+                            .WithOrigins("http://localhost:3000", "https://localhost:3000");
+                    });
             });
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
@@ -41,7 +41,7 @@ namespace API.Extensions
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
             services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
             services.AddSignalR();
-            
+
             // needed to load configuration from appsettings.json
             services.AddOptions();
 

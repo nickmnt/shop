@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Core;
@@ -14,7 +13,6 @@ namespace Application.Products
     {
         public class Query : IRequest<Result<List<Product>>>
         {
-
         }
 
         public class Handler : IRequestHandler<Query, Result<List<Product>>>
@@ -25,11 +23,11 @@ namespace Application.Products
             {
                 _context = context;
             }
-            
+
             public async Task<Result<List<Product>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var products = await _context.Products.ToListAsync(cancellationToken);
-                
+
                 return Result<List<Product>>.Success(products);
             }
         }

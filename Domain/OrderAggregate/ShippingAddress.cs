@@ -5,6 +5,5 @@ namespace Domain.OrderAggregate
     [Owned]
     public class ShippingAddress : Address
     {
-        
     }
 }

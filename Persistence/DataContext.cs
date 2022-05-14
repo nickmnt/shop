@@ -9,13 +9,12 @@ namespace Persistence
     {
         public DataContext(DbContextOptions options) : base(options)
         {
-            
         }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<Order> Orders { get; set; }
-        
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

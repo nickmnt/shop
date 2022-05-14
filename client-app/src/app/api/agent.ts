@@ -3,6 +3,8 @@ import { toast } from 'react-toastify';
 import { LoginDto, RegisterDto } from '../models/dto';
 import { User } from '../models/user';
 import history from '../historyApi';
+import { Product } from '../models/product';
+import { PaginatedResponse } from '../models/pagination';
 
 axios.defaults.baseURL = 'http://localhost:5000/api/';
 
@@ -27,6 +29,11 @@ axios.interceptors.response.use(
         //   );
         //   return response as AxiosResponse<PaginatedResult<any>>;
         // }
+        const pagination = response.headers['pagination'];
+        if (pagination) {
+            response.data = new PaginatedResponse(response.data, JSON.parse(pagination));
+            return response;
+        }
         return response;
     },
     (error: AxiosError) => {
@@ -66,7 +73,7 @@ axios.interceptors.response.use(
 );
 
 const requests = {
-    get: <T>(url: string) => axios.get<T>(url).then(responseBody),
+    get: <T>(url: string, params?: URLSearchParams) => axios.get<T>(url, { params }).then(responseBody),
     post: <T>(url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
     put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
     del: <T>(url: string) => axios.delete<T>(url).then(responseBody)
@@ -78,8 +85,14 @@ const Account = {
     register: (values: RegisterDto) => requests.post('account/register', values)
 };
 
+const Catalog = {
+    list: (params: URLSearchParams) => requests.get<PaginatedResponse<Product>>('products', params),
+    fetchFilters: () => requests.get('products/filters')
+};
+
 const agent = {
-    Account
+    Account,
+    Catalog
 };
 
 export default agent;

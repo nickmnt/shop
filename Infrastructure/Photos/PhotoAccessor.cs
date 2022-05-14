@@ -5,7 +5,6 @@ using Application.Photos;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace Infrastructure.Photos
@@ -23,6 +22,7 @@ namespace Infrastructure.Photos
 
             _cloudinary = new Cloudinary(account);
         }
+
         public async Task<PhotoUploadResult> AddPhoto(IFormFile file)
         {
             if (file.Length > 0)
@@ -33,7 +33,7 @@ namespace Infrastructure.Photos
                     File = new FileDescription(file.FileName, stream),
                     Transformation = new Transformation().Height(500).Width(500).Crop("fill")
                 };
-                
+
                 var uploadResult = await _cloudinary.UploadAsync(uploadParams);
 
                 if (uploadResult.Error != null)
@@ -51,7 +51,7 @@ namespace Infrastructure.Photos
 
             return null;
         }
-        
+
         public async Task<PhotoUploadResult> AddVideo(IFormFile file)
         {
             if (file.Length > 0)
@@ -61,7 +61,7 @@ namespace Infrastructure.Photos
                 {
                     File = new FileDescription(file.FileName, stream)
                 };
-                
+
                 var uploadResult = await _cloudinary.UploadLargeAsync(uploadParams);
 
                 if (uploadResult.Error != null)

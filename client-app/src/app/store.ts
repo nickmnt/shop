@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import userReducer from '../features/user/userSlice';
 import dialogReducer from '../features/dialog/dialogSlice';
 import axios from 'axios';
+import { catalogSlice } from '../features/catalog/catalogSlice';
 
 export const store = configureStore({
     reducer: {
         user: userReducer,
-        dialog: dialogReducer
+        dialog: dialogReducer,
+        catalog: catalogSlice.reducer
     }
 });
 

@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Threading.Tasks;
 using API.Extensions;
 using API.Services;
@@ -14,9 +13,10 @@ namespace API.Controllers
 {
     public class AccountController : BaseApiController
     {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly TokenService _tokenService;
         private readonly DataContext _context;
+        private readonly TokenService _tokenService;
+        private readonly UserManager<AppUser> _userManager;
+
         public AccountController(UserManager<AppUser> userManager, TokenService tokenService, DataContext context)
         {
             _context = context;
@@ -60,10 +60,7 @@ namespace API.Controllers
 
             if (!result.Succeeded)
             {
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(error.Code, error.Description);
-                }
+                foreach (var error in result.Errors) ModelState.AddModelError(error.Code, error.Description);
 
                 return ValidationProblem();
             }
@@ -82,10 +79,10 @@ namespace API.Controllers
             return new UserDto
             {
                 Email = user.Email,
-                Token = await _tokenService.GenerateToken(user),
+                Token = await _tokenService.GenerateToken(user)
             };
         }
-        
+
         private async Task<Basket> RetrieveBasket(string buyerId)
         {
             if (string.IsNullOrEmpty(buyerId))

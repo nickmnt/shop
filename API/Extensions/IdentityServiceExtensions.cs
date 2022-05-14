@@ -1,11 +1,7 @@
 ﻿using System.Text;
-using System.Threading.Tasks;
 using API.Services;
 using Domain;
-using Infrastructure.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -17,19 +13,16 @@ namespace API.Extensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddIdentityCore<AppUser>(opt =>
-                {
-                    opt.User.RequireUniqueEmail = true;
-                })
+            services.AddIdentityCore<AppUser>(opt => { opt.User.RequireUniqueEmail = true; })
                 .AddRoles<Role>()
                 .AddEntityFrameworkStores<DataContext>();
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
-            
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.TokenValidationParameters = new TokenValidationParameters()
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = false,
                         ValidateAudience = false,
@@ -38,13 +31,10 @@ namespace API.Extensions
                         IssuerSigningKey = key
                     };
                 });
-            services.AddAuthorization(options =>
-            {
+            services.AddAuthorization(options => { });
 
-            });
-            
             services.AddScoped<TokenService>();
-            
+
             return services;
         }
     }

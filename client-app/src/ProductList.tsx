@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack/Stack';
 import React from 'react';
 import Typography from '@mui/material/Typography/Typography';
 import { Link } from 'react-router-dom';
-import Product from './Product';
+import ProductCard from './Product';
 
 export default function ProductList() {
     return (
@@ -32,19 +32,7 @@ export default function ProductList() {
                     flexShrink: 0,
                     flexGrow: 0
                 }}
-            >
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-            </div>
+            ></div>
         </Stack>
     );
 }

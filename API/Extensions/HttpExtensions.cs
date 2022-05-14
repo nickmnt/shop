@@ -1,22 +1,16 @@
 ﻿using System.Text.Json;
+using API.RequestHelpers;
 using Microsoft.AspNetCore.Http;
 
 namespace API.Extensions
 {
     public static class HttpExtensions
     {
-        public static void AddPaginationHeader(this HttpResponse response, int currentPage,
-            int pageSize, int totalCount, int totalPages)
+        public static void AddPaginationHeader(this HttpResponse response, MetaData metaData)
         {
-            var paginationHeader = new
-            {
-                currentPage,
-                pageSize,
-                totalCount,
-                totalPages
-            };
-            
-            response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationHeader));
+            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+
+            response.Headers.Add("Pagination", JsonSerializer.Serialize(metaData, options));
             response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
         }
     }
