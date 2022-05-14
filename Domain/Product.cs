@@ -1,12 +1,15 @@
-﻿using System;
-
 namespace Domain
 {
     public class Product
     {
-        public Guid Id { get; set; }
-        public string Title { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public long Price { get; set; }
+        public string PictureUrl { get; set; }
+        public string Type { get; set; }
+        public string Brand { get; set; }
+        public int QuantityInStock { get; set; }
+        public string PublicId { get; set; }
     }
 }
