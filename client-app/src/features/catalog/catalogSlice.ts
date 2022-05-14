@@ -39,13 +39,13 @@ export const fetchProductsAsync = createAsyncThunk<Product[], void, { state: Roo
     }
 });
 
-// export const fetchProductAsync = createAsyncThunk<Product, number>('catalog/fetchProductAsync', async (productId, thunkAPI) => {
-//     try {
-//         return await agent.Catalog.details(productId);
-//     } catch (error: any) {
-//         return thunkAPI.rejectWithValue({ error: error.data });
-//     }
-// });
+export const fetchProductAsync = createAsyncThunk<Product, number>('catalog/fetchProductAsync', async (productId, thunkAPI) => {
+    try {
+        return await agent.Catalog.details(productId);
+    } catch (error: any) {
+        return thunkAPI.rejectWithValue({ error: error.data });
+    }
+});
 
 export const fetchFilters = createAsyncThunk('catalog/fetchFilters', async (_, thunkAPI) => {
     try {
@@ -114,17 +114,17 @@ export const catalogSlice = createSlice({
             console.log(action.payload);
             state.status = 'idle';
         });
-        // builder.addCase(fetchProductAsync.pending, (state) => {
-        //     state.status = 'pendingFetchProduct';
-        // });
-        // builder.addCase(fetchProductAsync.fulfilled, (state, action) => {
-        //     productsAdapter.upsertOne(state, action.payload);
-        //     state.status = 'idle';
-        // });
-        // builder.addCase(fetchProductAsync.rejected, (state, action) => {
-        //     console.log(action);
-        //     state.status = 'idle';
-        // });
+        builder.addCase(fetchProductAsync.pending, (state) => {
+            state.status = 'pendingFetchProduct';
+        });
+        builder.addCase(fetchProductAsync.fulfilled, (state, action) => {
+            productsAdapter.upsertOne(state, action.payload);
+            state.status = 'idle';
+        });
+        builder.addCase(fetchProductAsync.rejected, (state, action) => {
+            console.log(action);
+            state.status = 'idle';
+        });
         builder.addCase(fetchFilters.pending, (state) => {
             state.status = 'pendingFetchFilters';
         });

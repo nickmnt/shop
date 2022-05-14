@@ -12,6 +12,7 @@ import RegisterDialog from './dialogs/RegisterDialog';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Catalog from './features/catalog/Catalog';
+import ProductDetails from './features/catalog/ProductDetails';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -42,6 +43,7 @@ function App() {
                         <Route path="/categories" element={<Categories />} />
                         <Route path="/category/:catId" element={<CategoryPage />} />
                         <Route path="/catalog" element={<Catalog />} />
+                        <Route path="/catalog/:id" element={<ProductDetails />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

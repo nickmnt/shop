@@ -2,7 +2,6 @@ import Stack from '@mui/material/Stack/Stack';
 import React from 'react';
 import Typography from '@mui/material/Typography/Typography';
 import { Link } from 'react-router-dom';
-import ProductCard from './Product';
 
 export default function ProductList() {
     return (

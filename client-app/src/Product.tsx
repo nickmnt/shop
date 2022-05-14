@@ -28,7 +28,7 @@ export default function ProductCard({ product }: Props) {
                 textDecoration: 'none'
             }}
             component={Link}
-            to="/category/laptop"
+            to={`/catalog/${product.id}`}
         >
             <div
                 style={{

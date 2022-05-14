@@ -5,6 +5,7 @@ import { User } from '../models/user';
 import history from '../historyApi';
 import { Product } from '../models/product';
 import { PaginatedResponse } from '../models/pagination';
+import { Basket } from '../models/basket';
 
 axios.defaults.baseURL = 'http://localhost:5000/api/';
 
@@ -87,12 +88,20 @@ const Account = {
 
 const Catalog = {
     list: (params: URLSearchParams) => requests.get<PaginatedResponse<Product>>('products', params),
+    details: (id: number) => requests.get<Product>(`products/${id}`),
     fetchFilters: () => requests.get('products/filters')
+};
+
+const BasketRequests = {
+    get: () => requests.get<Basket>('basket'),
+    addItem: (productId: number, quantity = 1) => requests.post<Basket>(`basket?productId=${productId}&quantity=${quantity}`, {}),
+    removeItem: (productId: number, quantity = 1) => requests.del(`basket?productId=${productId}&quantity=${quantity}`)
 };
 
 const agent = {
     Account,
-    Catalog
+    Catalog,
+    BasketRequests
 };
 
 export default agent;
