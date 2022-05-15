@@ -20,6 +20,8 @@ import BottomNav from './BottomNav';
 import CheckoutWrapper from './features/checkout/CheckoutWrapper';
 import Orders from './features/orders/Orders';
 import Inventory from './features/admin/Inventory';
+import ProtectedAdminRoute from './app/common/ProtectedAdminRoute';
+import ProtectedRoute from './app/common/ProtectedRoute';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -54,9 +56,30 @@ function App() {
                         <Route path="/catalog" element={<Catalog />} />
                         <Route path="/catalog/:id" element={<ProductDetails />} />
                         <Route path="/basket" element={<BasketPage />} />
-                        <Route path="/checkout" element={<CheckoutWrapper />} />
-                        <Route path="/orders" element={<Orders />} />
-                        <Route path="/admin" element={<Inventory />} />
+                        <Route
+                            path="/checkout"
+                            element={
+                                <ProtectedRoute>
+                                    <CheckoutWrapper />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="/orders"
+                            element={
+                                <ProtectedRoute>
+                                    <Orders />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="/admin"
+                            element={
+                                <ProtectedAdminRoute>
+                                    <Inventory />
+                                </ProtectedAdminRoute>
+                            }
+                        />
                     </Route>
                 </Routes>
                 <BottomNav value={0} />

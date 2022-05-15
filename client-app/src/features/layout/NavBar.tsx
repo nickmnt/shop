@@ -47,21 +47,27 @@ export default function NavBar() {
                             display: 'flex',
                             alignItems: 'center'
                         }}
+                        component={Link}
+                        to="/basket/"
                     >
                         <ShoppingCartIcon sx={{ marginRight: '.5rem' }} />
                         Cart
                     </Button>
-                    <Button
-                        sx={{
-                            my: 2,
-                            color: 'white',
-                            display: 'flex',
-                            alignItems: 'center'
-                        }}
-                    >
-                        <AddCircleIcon sx={{ marginRight: '.5rem' }} />
-                        Create
-                    </Button>
+                    {user.user && user.user.roles && user.user.roles.includes('Admin') && (
+                        <Button
+                            sx={{
+                                my: 2,
+                                color: 'white',
+                                display: 'flex',
+                                alignItems: 'center'
+                            }}
+                            component={Link}
+                            to={'/admin/'}
+                        >
+                            <AddCircleIcon sx={{ marginRight: '.5rem' }} />
+                            Admin Panel
+                        </Button>
+                    )}
                 </Box>
                 <div style={{ flexGrow: 1 }} />
                 <Box sx={{ display: 'flex' }}>
