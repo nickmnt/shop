@@ -73,17 +73,38 @@ axios.interceptors.response.use(
     }
 );
 
+const createFormData = (item: any) => {
+    let formData = new FormData();
+    for (const key in item) {
+        formData.append(key, item[key]);
+    }
+    return formData;
+};
+
 const requests = {
     get: <T>(url: string, params?: URLSearchParams) => axios.get<T>(url, { params }).then(responseBody),
     post: <T>(url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
     put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
-    del: <T>(url: string) => axios.delete<T>(url).then(responseBody)
+    del: <T>(url: string) => axios.delete<T>(url).then(responseBody),
+    postForm: (url: string, data: FormData) =>
+        axios
+            .post(url, data, {
+                headers: { 'Content-type': 'multipart/form-data' }
+            })
+            .then(responseBody),
+    putForm: (url: string, data: FormData) =>
+        axios
+            .put(url, data, {
+                headers: { 'Content-type': 'multipart/form-data' }
+            })
+            .then(responseBody)
 };
 
 const Account = {
     login: (user: LoginDto) => requests.post<User>('/Account/login', user),
     currentUser: () => requests.get<User>('account/currentUser'),
-    register: (values: RegisterDto) => requests.post('account/register', values)
+    register: (values: RegisterDto) => requests.post('account/register', values),
+    fetchAddress: () => requests.get<any>('account/savedAddress')
 };
 
 const Catalog = {
@@ -98,10 +119,29 @@ const BasketRequests = {
     removeItem: (productId: number, quantity = 1) => requests.del(`basket?productId=${productId}&quantity=${quantity}`)
 };
 
+const Orders = {
+    list: () => requests.get<any>('orders'),
+    fetch: (id: number) => requests.get(`orders/${id}`),
+    create: (values: any) => requests.post<any>('orders', values)
+};
+
+const Payments = {
+    createPaymentIntent: () => requests.post('payments', {})
+};
+
+const Admin = {
+    createProduct: (product: any) => requests.postForm('products', createFormData(product)),
+    updateProduct: (product: any) => requests.putForm('products', createFormData(product)),
+    deleteProduct: (id: number) => requests.del(`products/${id}`)
+};
+
 const agent = {
     Account,
     Catalog,
-    BasketRequests
+    BasketRequests,
+    Orders,
+    Payments,
+    Admin
 };
 
 export default agent;

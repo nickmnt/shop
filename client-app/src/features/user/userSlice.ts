@@ -4,6 +4,7 @@ import { LoginDto } from '../../app/models/dto';
 import { User } from '../../app/models/user';
 import agent from '../../app/api/agent';
 import history from '../../app/historyApi';
+import { setBasket } from '../basket/basketSlice';
 
 export interface UserState {
     user: User | null;
@@ -13,7 +14,8 @@ export interface UserState {
 export const signInUser = createAsyncThunk<User, LoginDto>('account/signInUser', async (data, thunkAPI) => {
     try {
         const userDto = await agent.Account.login(data);
-        const { ...user } = userDto;
+        const { basket, ...user } = userDto;
+        if (basket) thunkAPI.dispatch(setBasket(basket));
         localStorage.setItem('user', JSON.stringify(user));
         return user;
     } catch (error: any) {
@@ -27,7 +29,8 @@ export const fetchCurrentUser = createAsyncThunk<User>(
         thunkAPI.dispatch(setUser(JSON.parse(localStorage.getItem('user')!)));
         try {
             const userDto = await agent.Account.currentUser();
-            const { ...user } = userDto;
+            const { basket, ...user } = userDto;
+            if (basket) thunkAPI.dispatch(setBasket(basket));
             localStorage.setItem('user', JSON.stringify(user));
             return user;
         } catch (error: any) {

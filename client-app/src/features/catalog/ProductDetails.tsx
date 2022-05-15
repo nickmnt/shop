@@ -1,3 +1,4 @@
+import LoadingButton from '@mui/lab/LoadingButton/LoadingButton';
 import Divider from '@mui/material/Divider/Divider';
 import Grid from '@mui/material/Grid/Grid';
 import Table from '@mui/material/Table/Table';
@@ -89,7 +90,7 @@ export default function ProductDetails() {
                         <TextField variant="outlined" type="number" label="Quantity in Cart" fullWidth value={quantity} onChange={handleInputChange} />
                     </Grid>
                     <Grid item xs={6}>
-                        {/* <LoadingButton
+                        <LoadingButton
                             disabled={item?.quantity === quantity}
                             loading={status.includes('pending')}
                             onClick={handleUpdateCart}
@@ -100,7 +101,7 @@ export default function ProductDetails() {
                             fullWidth
                         >
                             {item ? 'Update Quantity' : 'Add to Cart'}
-                        </LoadingButton> */}
+                        </LoadingButton>
                     </Grid>
                 </Grid>
             </Grid>

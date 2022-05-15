@@ -1,4 +1,5 @@
-﻿using Application.Core;
+﻿using API.Services;
+using Application.Core;
 using Application.Interfaces;
 using Application.Products;
 using Infrastructure.Photos;
@@ -38,8 +39,9 @@ namespace API.Extensions
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddScoped<IUserAccessor, UserAccessor>();
-            services.AddScoped<IPhotoAccessor, PhotoAccessor>();
+            services.AddScoped<PaymentService>();
             services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
+            services.AddScoped<IPhotoAccessor, PhotoAccessor>();
             services.AddSignalR();
 
             // needed to load configuration from appsettings.json

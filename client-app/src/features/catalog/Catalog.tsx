@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import useProducts from '../../app/hooks/useProducts';
 import { setPageNumber, setProductParams } from './catalogSlice';
 import ProductList from './ProductList';
+import ProductSearch from './ProductSearch';
 
 const sortOptions = [
     { value: 'name', label: 'Alphabetical' },
@@ -25,7 +26,9 @@ export default function Catalog() {
     return (
         <Grid container columnSpacing={4}>
             <Grid item xs={3}>
-                <Paper sx={{ mb: 2 }}>{/* <ProductSearch /> */}</Paper>
+                <Paper sx={{ mb: 2 }}>
+                    <ProductSearch />
+                </Paper>
                 <Paper sx={{ mb: 2, p: 2 }}>
                     <RadioButtonGroup selectedValue={productParams.orderBy} options={sortOptions} onChange={(e) => dispatch(setProductParams({ orderBy: e.target.value }))} />
                 </Paper>

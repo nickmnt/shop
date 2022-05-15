@@ -20,8 +20,8 @@ export default function BottomNav({ value }: Props) {
         <BottomNavigation showLabels value={value} sx={{ width: '100%', height: '5rem', bottom: 0, position: 'fixed' }}>
             <BottomNavigationAction label="Home" component={Link} to="/" icon={value !== 0 ? <HomeOutlinedIcon /> : <HomeIcon />} />
             <BottomNavigationAction label="Categories" component={Link} to="/categories" icon={value !== 1 ? <CategoryOutlinedIcon /> : <CategoryIcon />} />
-            <BottomNavigationAction label="Shopping Cart" component={Link} to="/cart" icon={value !== 2 ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />} />
-            <BottomNavigationAction label="My account" component={Link} to="/account" icon={value !== 3 ? <PersonOutlineIcon /> : <PersonIcon />} />
+            <BottomNavigationAction label="Shopping Cart" component={Link} to="/catalog" icon={value !== 2 ? <ShoppingCartOutlinedIcon /> : <ShoppingCartIcon />} />
+            <BottomNavigationAction label="My account" component={Link} to="/basket" icon={value !== 3 ? <PersonOutlineIcon /> : <PersonIcon />} />
         </BottomNavigation>
     );
 }

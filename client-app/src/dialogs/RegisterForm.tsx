@@ -7,7 +7,6 @@ import ValidationErrors from './ValidationErrors';
 import { useAppDispatch } from '../app/hooks';
 import agent from '../app/api/agent';
 import { toast } from 'react-toastify';
-import history from '../app/historyApi';
 import { setLoginOpen, setRegisterOpen } from '../features/dialog/dialogSlice';
 
 export default function RegisterForm() {

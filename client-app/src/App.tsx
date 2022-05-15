@@ -13,6 +13,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Catalog from './features/catalog/Catalog';
 import ProductDetails from './features/catalog/ProductDetails';
+import { fetchBasketAsync } from './features/basket/basketSlice';
+import BasketPage from './features/basket/BasketPage';
+import NavBar from './features/layout/NavBar';
+import BottomNav from './BottomNav';
+import CheckoutWrapper from './features/checkout/CheckoutWrapper';
+import Orders from './features/orders/Orders';
+import Inventory from './features/admin/Inventory';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -21,6 +28,7 @@ function App() {
     const initApp = useCallback(async () => {
         try {
             await dispatch(fetchCurrentUser());
+            await dispatch(fetchBasketAsync());
         } catch (error) {
             console.log(error);
         }
@@ -37,6 +45,7 @@ function App() {
     return (
         <div className="baseSettings" style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
             <BrowserRouter>
+                <NavBar />
                 <Routes>
                     <Route path="/">
                         <Route index element={<Home />} />
@@ -44,8 +53,13 @@ function App() {
                         <Route path="/category/:catId" element={<CategoryPage />} />
                         <Route path="/catalog" element={<Catalog />} />
                         <Route path="/catalog/:id" element={<ProductDetails />} />
+                        <Route path="/basket" element={<BasketPage />} />
+                        <Route path="/checkout" element={<CheckoutWrapper />} />
+                        <Route path="/orders" element={<Orders />} />
+                        <Route path="/admin" element={<Inventory />} />
                     </Route>
                 </Routes>
+                <BottomNav value={0} />
             </BrowserRouter>
             <LoginDialog />
             <RegisterDialog />
