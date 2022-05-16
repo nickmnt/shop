@@ -18,7 +18,7 @@ export default function NavBar() {
     const dispatch = useAppDispatch();
 
     return (
-        <AppBar position="static">
+        <AppBar position="fixed">
             <Toolbar variant="dense">
                 <Button
                     sx={{
