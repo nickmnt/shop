@@ -24,6 +24,29 @@ body {
     background-color: #fafafa;
 }
 
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) { //600px
+            @content
+        };
+    }
+    @if $breakpoint == tab-port {
+        @media only screen and (max-width: 56.25em) { //900px
+            @content
+        };
+    }
+    @if $breakpoint == tab-land { //1200px
+        @media only screen and (max-width: 75em) {
+            @content
+        };
+    }
+    @if $breakpoint == big-desktop {
+        @media only screen and (min-width: 112.5em) { //1200px
+            @content
+        };
+    }
+}
+
 $color-blue: #0088cc;
 $color-grey-dark-1: #8e8e8e;
 $color-grey-dark-2: #9c9c9c;

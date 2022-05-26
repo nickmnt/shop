@@ -1,4 +1,3 @@
-import Paper from '@mui/material/Paper/Paper';
 import Stack from '@mui/material/Stack/Stack';
 import Typography from '@mui/material/Typography/Typography';
 import React from 'react';
@@ -50,10 +49,10 @@ export default function ProductCard({ product }: Props) {
                         alignItems: 'center'
                     }}
                 >
-                    <Typography sx={{ fontSize: '1.3rem', color: '#8e8e8e', fontWeight: 500 }}>{truncate(product.name, 25)}</Typography>
+                    <Typography sx={{ fontSize: '1.3rem', color: '#333', fontWeight: 500 }}>{truncate(product.name, 25)}</Typography>
                     <Stack flexDirection="row" sx={{ margin: '.5rem 0' }}>
                         <InventoryIcon sx={{ color: '#88D1F1', width: '1.6rem', height: '1.6rem' }} />
-                        <Typography sx={{ fontSize: '1rem', color: '#9c9c9c', marginLeft: '1rem' }}>Available in storage</Typography>
+                        <Typography sx={{ fontSize: '1rem', color: '#8e8e8e', marginLeft: '1rem' }}>Available in storage</Typography>
                     </Stack>
                     <Stack flexDirection="row" sx={{ margin: '.5rem 0', width: '100%' }} alignItems="center" justifyContent="space-between">
                         <Typography
