@@ -12,38 +12,16 @@ import CheckroomIcon from '@mui/icons-material/Checkroom';
 import Grid from '@mui/material/Grid/Grid';
 import BottomNav from './BottomNav';
 import BaseContainer from './app/common/BaseContainer';
-import Carousel from 'react-material-ui-carousel';
-import { Box } from '@mui/material';
-
-const items = [
-    {
-        name: 'Random Banner #1',
-        description: 'A sample banner!',
-        src: './images/banner1.jpg'
-    },
-    {
-        name: 'Random Banner #2',
-        description: 'Another sample banner!',
-        src: './images/banner2.jpg'
-    },
-    {
-        name: 'Random Banner #3',
-        description: 'The final sample banner!',
-        src: './images/banner3.jpg'
-    }
-];
-
-const Item = (props: any) => {
-    return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <img src={props.item.src} alt={props.item.name} />
-            <h2>{props.item.name}</h2>
-            <p>{props.item.description}</p>
-        </Box>
-    );
-};
+import { Button } from '@mui/material';
+import Image from 'mui-image';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from './app/hooks';
+import { setRegisterOpen } from './features/dialog/dialogSlice';
 
 export default function Home() {
+    let navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
     return (
         <BaseContainer>
             <div
@@ -57,22 +35,60 @@ export default function Home() {
                         flex: '1',
                         display: 'flex',
                         flexDirection: 'center',
-                        justifyContent: 'center',
-                        padding: '1rem'
+                        justifyContent: 'center'
                     }}
                     square
                 >
                     <Stack sx={{ width: '100%', height: '100%', justifyContent: 'center' }} direction="column">
-                        <Carousel>
-                            {items.map((x) => (
-                                <Item item={x} />
-                            ))}
-                        </Carousel>
+                        <div className="welcome">
+                            <div className="welcome__left">
+                                <p className="welcome__leftTop">
+                                    <Typography display="inline" variant="h3" sx={{ fontWeight: 'bold' }}>
+                                        Buy the best products from
+                                    </Typography>
+                                    <Typography display="inline" variant="h3" className="welcome__appTitle" sx={{ display: 'inline', fontWeight: 'bold' }}>
+                                        &nbsp;ReactStore
+                                    </Typography>
+                                </p>
+                                <Typography variant="h6">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex neque a cum sunt quidem in minus dignissimos assumenda nulla. Consequuntur necessitatibus a mollitia.
+                                    Assumenda quod natus fugit eius numquam et.
+                                </Typography>
+                                <div className="welcome__leftBottom">
+                                    <Button
+                                        sx={{ fontSize: '2rem', borderRadius: '20px' }}
+                                        variant="contained"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            navigate('./catalog', { replace: true });
+                                        }}
+                                    >
+                                        Products
+                                    </Button>
+                                    <div style={{ flex: 1 }} />
+                                    <Button
+                                        sx={{ fontSize: '2rem', borderRadius: '20px' }}
+                                        variant="outlined"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            dispatch(setRegisterOpen(true));
+                                        }}
+                                    >
+                                        Sign up
+                                    </Button>
+                                </div>
+                            </div>
+                            <div style={{ flex: 1 }} />
+                            <div className="welcome__right">
+                                <Image src="https://freepngimg.com/download/apple_iphone/117096-photos-12-iphone-png-file-hd.png" alt="red" />
+                            </div>
+                        </div>{' '}
                         <Stack
                             sx={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                width: '100%'
+                                width: '100%',
+                                m: '7.5rem 0'
                             }}
                             direction="column"
                             spacing={2}

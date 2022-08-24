@@ -1,4 +1,4 @@
-import { Box, BoxProps, Grow } from '@mui/material';
+import { BoxProps, Grow } from '@mui/material';
 import React from 'react';
 
 export interface GrowListProps extends BoxProps {
@@ -6,7 +6,7 @@ export interface GrowListProps extends BoxProps {
 }
 
 export function GrowList(props: GrowListProps) {
-    const { interval = 200, children, ...rest } = props;
+    const { interval = 200, children } = props;
 
     return (
         <>

@@ -6,7 +6,6 @@ import Box from '@mui/material/Box/Box';
 import Button from '@mui/material/Button/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LogoutIcon from '@mui/icons-material/Logout';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { setLoginOpen, setRegisterOpen } from '../../features/dialog/dialogSlice';
 import { signOut } from '../../features/user/userSlice';
@@ -18,7 +17,7 @@ export default function NavBar() {
     const dispatch = useAppDispatch();
 
     return (
-        <AppBar position="fixed">
+        <AppBar position="fixed" sx={{ bgcolor: 'black' }}>
             <Toolbar variant="dense">
                 <Button
                     sx={{
@@ -31,7 +30,7 @@ export default function NavBar() {
                     to="/"
                 >
                     <ShopIcon sx={{ marginRight: '1rem' }} />
-                    <Typography variant="h6" color="inherit" component="div">
+                    <Typography variant="h6" className="navBar__header" component="div">
                         ReactStore
                     </Typography>
                 </Button>
@@ -73,17 +72,6 @@ export default function NavBar() {
                 <Box sx={{ display: 'flex' }}>
                     {user.user ? (
                         <>
-                            <Button
-                                sx={{
-                                    my: 2,
-                                    color: 'white',
-                                    display: 'flex',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                <AccountCircleIcon sx={{ marginRight: '.5rem' }} />
-                                Account
-                            </Button>
                             <Button
                                 sx={{
                                     my: 2,

@@ -1,6 +1,9 @@
 @import './base/base';
 @import './base/baseSettings';
 
+@import "./components/navBar";
+@import "./components/welcome";
+
 @import './pages/catalog';
 
 // https://www.schemecolor.com/azure-blue-color-palette.php

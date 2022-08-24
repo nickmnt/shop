@@ -9,7 +9,6 @@ import useProducts from '../../app/hooks/useProducts';
 import { setProductParams } from '../catalog/catalogSlice';
 import IconButton from '@mui/material/IconButton/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Button from '@mui/material/Button/Button';
 
 const sortOptions = [
     { value: 'name', label: 'Alphabetical' },

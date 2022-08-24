@@ -1,4 +1,5 @@
 import Button from '@mui/material/Button/Button';
+import Paper from '@mui/material/Paper/Paper';
 import Typography from '@mui/material/Typography/Typography';
 import { ErrorMessage, Form, Formik } from 'formik';
 import React from 'react';
@@ -25,25 +26,27 @@ export default function LoginForm() {
             }}
         >
             {({ handleSubmit, isSubmitting, errors }) => (
-                <Form onSubmit={handleSubmit} autoComplete="off" style={{ padding: '2rem' }}>
-                    <Typography variant="h4" textAlign="center" sx={{ marginBottom: '1rem' }}>
-                        Login
-                    </Typography>
-                    <MyTextInput name="username" placeholder="Username or email" />
-                    <MyTextInput name="password" placeholder="Password" type="password" />
-                    <ErrorMessage name="error" render={() => <Typography style={{ margin: '.5rem 0', color: 'red' }}>{errors.error}</Typography>} />
-                    <Button
-                        sx={{
-                            width: '100%',
-                            marginTop: '1rem'
-                        }}
-                        variant="outlined"
-                        disabled={isSubmitting}
-                        type="submit"
-                    >
-                        Login
-                    </Button>
-                </Form>
+                <Paper>
+                    <Form onSubmit={handleSubmit} autoComplete="off" style={{ padding: '2rem' }}>
+                        <Typography variant="h4" textAlign="center" sx={{ marginBottom: '1rem' }}>
+                            Login
+                        </Typography>
+                        <MyTextInput name="username" placeholder="Username or email" />
+                        <MyTextInput name="password" placeholder="Password" type="password" />
+                        <ErrorMessage name="error" render={() => <Typography style={{ margin: '.5rem 0', color: 'red' }}>{errors.error}</Typography>} />
+                        <Button
+                            sx={{
+                                width: '100%',
+                                marginTop: '1rem'
+                            }}
+                            variant="outlined"
+                            disabled={isSubmitting}
+                            type="submit"
+                        >
+                            Login
+                        </Button>
+                    </Form>
+                </Paper>
             )}
         </Formik>
     );

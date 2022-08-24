@@ -1,0 +1,38 @@
+.welcome {
+    display: flex;
+    width: 100%;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    padding-top: 15rem;
+    
+    &__left {
+        display: flex;
+        flex-direction: column;
+        max-width: 35%;
+        margin-left: 5rem;
+    }
+
+    &__leftTop {
+        margin-bottom: 3rem;
+    }
+
+    &__leftBottom {
+        margin-top: 3rem;
+        display: flex;
+    }
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__btn {
+        font-size: 54rem;
+    }
+
+    &__appTitle {
+        background: -webkit-linear-gradient(#363636, black);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}

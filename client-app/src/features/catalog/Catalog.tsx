@@ -69,7 +69,7 @@ export default function Catalog() {
                         FILTERS
                     </Button>
                 </Grid>
-                <Grid item xs={9} sx={{ mb: 2 }}>
+                <Grid item md={9} xs={12} sx={{ mb: 2 }}>
                     {metaData && <AppPagination metaData={metaData} onPageChange={(page: number) => dispatch(setPageNumber({ pageNumber: page }))} />}
                 </Grid>
             </Grid>

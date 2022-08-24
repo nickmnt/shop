@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Paper, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import CenterContainer from '../../app/common/CenterContainer';
 import { useAppSelector } from '../../app/hooks';
@@ -17,8 +17,8 @@ export default function BasketPage() {
                 <Box component={Link} to={'/catalog'}>
                     <GlassCard sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', padding: '3rem' }}>
                         <ShoppingBasketIcon sx={{ height: 80, width: 80 }} />
-                        <Typography variant="h3">Your basket is empty</Typography>
-                        <Typography variant="h3">Click here to explore products</Typography>
+                        <Typography>Your basket is empty</Typography>
+                        <Typography>Click here to explore products</Typography>
                     </GlassCard>
                 </Box>
             </CenterContainer>
