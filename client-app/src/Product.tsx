@@ -6,6 +6,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import { Product } from './app/models/product';
 import { GlassCard } from './app/common/GlassCard';
 import { Box } from '@mui/material';
+import Image from 'mui-image';
 
 export interface Props {
     product: Product;
@@ -37,7 +38,7 @@ export default function ProductCard({ product }: Props) {
                         alignItems: 'center'
                     }}
                 >
-                    <img alt="laptop" src={product.pictureUrl} style={{ width: '90%' }} />
+                    <Image alt={product.name} src={product.pictureUrl} style={{ width: '90%' }} />
                 </div>
                 <div
                     style={{
