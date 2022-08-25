@@ -37,7 +37,7 @@ export default function ProductCard({ product }: Props) {
                         alignItems: 'center'
                     }}
                 >
-                    <img alt="laptop" src="../images/sample-product-1.png" style={{ width: '90%' }} />
+                    <img alt="laptop" src={product.pictureUrl} style={{ width: '90%' }} />
                 </div>
                 <div
                     style={{
