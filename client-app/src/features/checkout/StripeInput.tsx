@@ -10,5 +10,23 @@ export const StripeInput = forwardRef(function StripeInput({ component: Componen
         focus: () => elementRef.current.focus
     }));
 
-    return <Component onReady={(element: any) => (elementRef.current = element)} {...props} />;
+    return (
+        <Component
+            options={{
+                style: {
+                    base: {
+                        color: '#FFF',
+                        ':-webkit-autofill': {
+                            color: '#fce883'
+                        },
+                        '::placeholder': {
+                            color: '#9e9e9e'
+                        }
+                    }
+                }
+            }}
+            onReady={(element: any) => (elementRef.current = element)}
+            {...props}
+        />
+    );
 });

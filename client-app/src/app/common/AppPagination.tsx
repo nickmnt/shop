@@ -19,7 +19,7 @@ export default function AppPagination({ metaData, onPageChange }: Props) {
 
     return (
         <Box display="flex" flexDirection={{ xs: 'column', md: 'row' }} justifyContent="space-between" alignItems="center">
-            <Typography>
+            <Typography color="textPrimary">
                 Displaying {(currentPage - 1) * pageSize + 1}-{currentPage * pageSize > totalCount ? totalCount : currentPage * pageSize} of {totalCount} items
             </Typography>
             <Pagination color="secondary" size="large" count={totalPages} page={pageNumber} onChange={(e, page) => handlePageChange(page)} />

@@ -89,6 +89,7 @@ function App() {
             <div className="baseSettings" style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
                 <BrowserRouter>
                     <NavBar />
+                    <div style={{ paddingTop: '8rem' }} />
                     <Routes>
                         <Route path="/">
                             <Route index element={<Home />} />
@@ -123,6 +124,7 @@ function App() {
                             />
                         </Route>
                     </Routes>
+                    <div style={{ paddingBottom: '5rem' }} />
                     <BottomNav value={0} />
                 </BrowserRouter>
                 <LoginDialog />

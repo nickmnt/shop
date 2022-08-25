@@ -5,5 +5,5 @@ export interface Props {
 }
 
 export default function BaseContainer({ children }: Props) {
-    return <div style={{ margin: '10rem 2.5rem' }}>{children}</div>;
+    return <div style={{ margin: '4rem' }}>{children}</div>;
 }

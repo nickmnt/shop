@@ -41,9 +41,9 @@ export default function Inventory() {
     if (editMode) return <ProductForm product={selectedProduct} cancelEdit={cancelEdit} />;
 
     return (
-        <>
+        <div style={{ marginBottom: '3rem' }}>
             <Box display="flex" justifyContent="space-between">
-                <Typography sx={{ p: 2 }} variant="h4">
+                <Typography sx={{ p: 2 }} variant="h4" color="textPrimary">
                     Inventory
                 </Typography>
                 <Button onClick={() => setEditMode(true)} sx={{ m: 2 }} size="large" variant="contained">
@@ -93,6 +93,6 @@ export default function Inventory() {
                     <AppPagination metaData={metaData} onPageChange={(page: number) => dispatch(setPageNumber({ pageNumber: page }))} />
                 </Box>
             )}
-        </>
+        </div>
     );
 }
