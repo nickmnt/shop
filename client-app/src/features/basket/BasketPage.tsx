@@ -15,14 +15,17 @@ export default function BasketPage() {
     const { user } = useAppSelector((state) => state.user);
     const dispatch = useAppDispatch();
 
-    if (!basket)
+    if (!basket || basket.items.length === 0)
         return (
             <CenterContainer>
-                <Box component={Link} to={'/catalog'}>
+                <Box>
                     <GlassCard sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', padding: '3rem' }}>
                         <ShoppingBasketIcon sx={{ height: 80, width: 80 }} />
                         <Typography>Your basket is empty</Typography>
                         <Typography>Click here to explore products</Typography>
+                        <Button component={Link} variant="contained" fullWidth to={'/catalog'} sx={{ marginTop: '1rem' }}>
+                            Back
+                        </Button>
                     </GlassCard>
                 </Box>
             </CenterContainer>

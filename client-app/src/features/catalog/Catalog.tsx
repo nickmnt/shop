@@ -33,7 +33,7 @@ export default function Catalog() {
     if (!filtersLoaded || !productsLoaded)
         return (
             <CenterContainer>
-                <GlassCard sx={{ padding: '1rem', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+                <GlassCard sx={{ padding: '3rem', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                     <CircularProgress />
                     <Typography variant="h5" sx={{ marginTop: '1rem' }}>
                         Loading Products...
