@@ -80,7 +80,10 @@ export default function Home() {
                             </div>
                             <div style={{ flex: 1 }} />
                             <div className="welcome__right">
-                                <Image src="https://freepngimg.com/download/apple_iphone/117096-photos-12-iphone-png-file-hd.png" alt="red" />
+                                <div style={{ flex: 1 }} />
+                                <div className="welcome__img">
+                                    <Image src="https://freepngimg.com/download/apple_iphone/117096-photos-12-iphone-png-file-hd.png" alt="red" />
+                                </div>
                             </div>
                         </div>{' '}
                         <Stack

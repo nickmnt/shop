@@ -23,13 +23,13 @@ import Orders from './features/orders/Orders';
 import Inventory from './features/admin/Inventory';
 import ProtectedAdminRoute from './app/common/ProtectedAdminRoute';
 import ProtectedRoute from './app/common/ProtectedRoute';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
 function App() {
     const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(true);
     const mode = 'dark';
-    const theme = React.useMemo(
+    let theme = React.useMemo(
         () =>
             createTheme({
                 typography: {
@@ -64,6 +64,8 @@ function App() {
             }),
         [mode]
     );
+
+    theme = responsiveFontSizes(theme);
 
     const initApp = useCallback(async () => {
         try {
