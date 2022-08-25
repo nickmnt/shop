@@ -49,10 +49,14 @@ export default function ProductCard({ product }: Props) {
                         alignItems: 'center'
                     }}
                 >
-                    <Typography sx={{ fontSize: '1.3rem', color: '#333', fontWeight: 500 }}>{truncate(product.name, 25)}</Typography>
+                    <Typography color="InfoText" sx={{ fontSize: '1.3rem', fontWeight: 'bold' }}>
+                        {truncate(product.name, 25)}
+                    </Typography>
                     <Stack flexDirection="row" sx={{ margin: '.5rem 0' }}>
                         <InventoryIcon sx={{ color: '#88D1F1', width: '1.6rem', height: '1.6rem' }} />
-                        <Typography sx={{ fontSize: '1rem', color: '#8e8e8e', marginLeft: '1rem' }}>Available in storage</Typography>
+                        <Typography color="InfoText" sx={{ fontSize: '1rem', marginLeft: '1rem', opacity: 0.75 }}>
+                            Available in storage
+                        </Typography>
                     </Stack>
                     <Stack flexDirection="row" sx={{ margin: '.5rem 0', width: '100%' }} alignItems="center" justifyContent="space-between">
                         <Typography

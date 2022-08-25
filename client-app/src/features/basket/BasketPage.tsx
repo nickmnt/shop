@@ -1,15 +1,19 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import CenterContainer from '../../app/common/CenterContainer';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import BasketSummary from './BasketSummary';
 import BasketTable from './BasketTable';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import BaseContainer from '../../app/common/BaseContainer';
 import { GlassCard } from '../../app/common/GlassCard';
+import { toast } from 'react-toastify';
+import { setLoginOpen } from '../dialog/dialogSlice';
 
 export default function BasketPage() {
     const { basket } = useAppSelector((state) => state.basket);
+    const { user } = useAppSelector((state) => state.user);
+    const dispatch = useAppDispatch();
 
     if (!basket)
         return (
@@ -31,7 +35,19 @@ export default function BasketPage() {
                 <Grid item xs={6} />
                 <Grid item xs={6}>
                     <BasketSummary />
-                    <Button component={Link} to="/checkout" variant="contained" size="large" fullWidth>
+                    <Button
+                        component={Link}
+                        to="/checkout"
+                        variant="contained"
+                        size="large"
+                        fullWidth
+                        onClick={() => {
+                            if (!user) {
+                                toast.error('You must login first!');
+                                dispatch(setLoginOpen(true));
+                            }
+                        }}
+                    >
                         Checkout
                     </Button>
                 </Grid>

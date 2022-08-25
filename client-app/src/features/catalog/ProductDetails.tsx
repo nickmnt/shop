@@ -49,12 +49,14 @@ export default function ProductDetails() {
     if (!product) return <div>Not Found</div>;
 
     return (
-        <Grid container spacing={6}>
+        <Grid container spacing={6} sx={{ marginTop: '5rem' }}>
             <Grid item xs={6}>
                 <img src={product.pictureUrl} alt={product.name} style={{ width: '100%' }} />
             </Grid>
             <Grid item xs={6}>
-                <Typography variant="h3">{product.name}</Typography>
+                <Typography variant="h3" color="textPrimary">
+                    {product.name}
+                </Typography>
                 <Divider sx={{ mb: 2 }} />
                 <Typography variant="h4" color="secondary">
                     ${(product.price / 100).toFixed(2)}
@@ -85,7 +87,7 @@ export default function ProductDetails() {
                         </TableBody>
                     </Table>
                 </TableContainer>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} sx={{ marginTop: '1rem' }}>
                     <Grid item xs={6}>
                         <TextField variant="outlined" type="number" label="Quantity in Cart" fullWidth value={quantity} onChange={handleInputChange} />
                     </Grid>
