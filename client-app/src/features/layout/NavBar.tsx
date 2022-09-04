@@ -11,6 +11,7 @@ import { setLoginOpen, setRegisterOpen } from '../../features/dialog/dialogSlice
 import { signOut } from '../../features/user/userSlice';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 export default function NavBar() {
     const user = useAppSelector((x) => x.user);
@@ -67,6 +68,19 @@ export default function NavBar() {
                             Admin Panel
                         </Button>
                     )}
+                    <Button
+                        sx={{
+                            my: 2,
+                            color: 'white',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                        component={Link}
+                        to="/orders/"
+                    >
+                        <CheckCircleIcon sx={{ marginRight: '.5rem' }} />
+                        Orders
+                    </Button>
                 </Box>
                 <div style={{ flexGrow: 1 }} />
                 <Box sx={{ display: 'flex' }}>

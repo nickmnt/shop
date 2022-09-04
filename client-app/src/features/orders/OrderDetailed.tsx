@@ -13,9 +13,9 @@ interface Props {
 export default function OrderDetailed({ order, setSelectedOrder }: Props) {
     const subtotal = order.orderItems.reduce((sum, item) => sum + item.quantity * item.price, 0) ?? 0;
     return (
-        <>
+        <div style={{ margin: '1rem' }}>
             <Box display="flex" justifyContent="space-between">
-                <Typography sx={{ p: 2 }} gutterBottom variant="h4">
+                <Typography sx={{ p: 2 }} gutterBottom variant="h4" color="textPrimary">
                     Order# {order.id} - {order.orderStatus}
                 </Typography>
                 <Button onClick={() => setSelectedOrder(0)} sx={{ m: 2 }} size="large" variant="contained">
@@ -29,6 +29,6 @@ export default function OrderDetailed({ order, setSelectedOrder }: Props) {
                     <BasketSummary subtotal={subtotal} />
                 </Grid>
             </Grid>
-        </>
+        </div>
     );
 }
