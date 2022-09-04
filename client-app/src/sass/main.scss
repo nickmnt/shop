@@ -1,0 +1,27 @@
+@import './base/base';
+@import './base/baseSettings';
+
+@import "./components/navBar";
+@import "./components/welcome";
+
+@import './pages/catalog';
+
+// https://www.schemecolor.com/azure-blue-color-palette.php
+// #0039A9
+// #027DFF
+// #3399FF
+// #88D1F1
+// #41AADE
+// #1392D3
+
+// $color-blue: #0088cc;
+// $color-grey-dark-1: #8e8e8e;
+// $color-grey-dark-2: #9c9c9c;
+// $color-grey-light: #e3e3e3;
+// $color-grey-light-1: #fafafa;
+// $color-white: #fff;
+// $color-black: #363636;
+// $color-black-dark: #000;
+// $color-green: #f0ffde;
+// $color-green-dark: #00853A;
+// //$color-green: #00FF6F;
