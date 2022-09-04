@@ -97,18 +97,24 @@ export default function ProductDetails() {
                                     <TextField variant="outlined" type="number" label="Quantity in Cart" fullWidth value={quantity} onChange={handleInputChange} />
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <LoadingButton
-                                        disabled={item?.quantity === quantity}
-                                        loading={status.includes('pending')}
-                                        onClick={handleUpdateCart}
-                                        sx={{ height: '55px' }}
-                                        color="primary"
-                                        size="large"
-                                        variant="contained"
-                                        fullWidth
-                                    >
-                                        {item ? 'Update Quantity' : 'Add to Cart'}
-                                    </LoadingButton>
+                                    {quantity <= product.quantityInStock! ? (
+                                        <LoadingButton
+                                            disabled={item?.quantity === quantity}
+                                            loading={status.includes('pending')}
+                                            onClick={handleUpdateCart}
+                                            sx={{ height: '55px' }}
+                                            color="primary"
+                                            size="large"
+                                            variant="contained"
+                                            fullWidth
+                                        >
+                                            {item ? 'Update Quantity' : 'Add to Cart'}
+                                        </LoadingButton>
+                                    ) : (
+                                        <Button disabled sx={{ height: '55px' }} color="primary" size="large" variant="contained" fullWidth>
+                                            Not enough items in stock
+                                        </Button>
+                                    )}
                                 </Grid>
                             </>
                         ) : (
