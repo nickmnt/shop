@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from '../features/user/userSlice';
 import dialogReducer from '../features/dialog/dialogSlice';
-import axios from 'axios';
+import axios, { AxiosRequestHeaders } from 'axios';
 import { catalogSlice } from '../features/catalog/catalogSlice';
 import { basketSlice } from '../features/basket/basketSlice';
 
@@ -21,7 +21,7 @@ axios.interceptors.request.use((config) => {
     const token = store.getState().user.user?.token;
     if (token) {
         if (!config.headers) {
-            config.headers = {};
+            config.headers = {} as AxiosRequestHeaders;
         }
 
         config.headers.Authorization = `Bearer ${token}`;

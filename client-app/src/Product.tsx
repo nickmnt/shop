@@ -1,6 +1,5 @@
 import Stack from '@mui/material/Stack/Stack';
 import Typography from '@mui/material/Typography/Typography';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import { Product } from './app/models/product';

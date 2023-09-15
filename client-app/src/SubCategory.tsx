@@ -1,6 +1,5 @@
 import Paper from '@mui/material/Paper/Paper';
 import Typography from '@mui/material/Typography/Typography';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function SubCategory() {
