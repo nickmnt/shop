@@ -7,7 +7,7 @@ import { Product } from '../models/product';
 import { PaginatedResponse } from '../models/pagination';
 import { Basket } from '../models/basket';
 
-axios.defaults.baseURL = 'http://localhost:5000/api/';
+axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_API_URL;
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
