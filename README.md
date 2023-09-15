@@ -48,12 +48,17 @@ To run Shop locally on your machine, follow these steps:
    cd client-app
    ```
 
-5. Install dependencies using Yarn:
+5. Enable legacy peer deps:
+   ```shell
+   npm config --location=project set legacy-peer-deps=true
+   ```
+   
+6. Install dependencies using npm:
    ```shell
    npm install
    ```
 
-6. Start the React app:
+7. Start the React app:
    ```shell
    npm run dev
    ```
