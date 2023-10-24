@@ -1,5 +1,9 @@
 # Shop - Ecommerce Store Project
 
+<h2 align="center">
+  <a href="https://photos.app.goo.gl/q6SoLUbT4fw6xe2r7">📷 𝙲𝚕𝚒𝚌𝚔 𝚝𝚘 𝚜𝚎𝚎 𝚜𝚌𝚛𝚎𝚎𝚗𝚜𝚑𝚘𝚝𝚜</a>
+</h2>
+
 Shop is an open-source ecommerce store project built using React.js, .Net 6, and TypeScript. It utilizes various libraries and technologies such as Redux, Material-UI, Stripe, Axios, Formik, React-Router, and Sass to provide a feature-rich and customizable ecommerce platform.
 
 ## Table of Contents
