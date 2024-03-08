@@ -1,8 +1,20 @@
 # Shop - Ecommerce Store Project
 
-<h2 align="center">
-  <a href="https://photos.app.goo.gl/q6SoLUbT4fw6xe2r7">📷 𝙲𝚕𝚒𝚌𝚔 𝚝𝚘 𝚜𝚎𝚎 𝚜𝚌𝚛𝚎𝚎𝚗𝚜𝚑𝚘𝚝𝚜</a>
-</h2>
+## 📷 Screenshots
+
+<details>
+  <summary>Screenshots (Hidden) - Click to open!</summary>
+  <img src="https://github.com/nickmnt/shop/blob/main/screenshots/Intro.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/shop/blob/main/screenshots/Products1.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/shop/blob/main/screenshots/Products2.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/shop/blob/main/screenshots/ProductInfo.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/shop/blob/main/screenshots/Cart.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/shop/blob/main/screenshots/Checkout1.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/shop/blob/main/screenshots/Checkout2.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/shop/blob/main/screenshots/Checkout3.png?raw=true" alt="Screenshot"></img>
+</details>
+
+## Summary
 
 Shop is an open-source ecommerce store project built using React.js, .Net 6, and TypeScript. It utilizes various libraries and technologies such as Redux, Material-UI, Stripe, Axios, Formik, React-Router, and Sass to provide a feature-rich and customizable ecommerce platform.
 
